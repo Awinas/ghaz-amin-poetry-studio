@@ -49,6 +49,163 @@ function render(){title.textContent=titleInput.value||'Untitled';poem.textConten
 photo.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{bg.src=r.result;bgData=r.result};r.readAsDataURL(f)};sample.onclick=()=>{bg.src='sample.jpg';bgData=null};resetPos.onclick=()=>{positions={title:{x:10,y:10},poem:{x:10,y:23}};render()};centerPoem.onclick=()=>{positions.poem.y=42;render()};clear.onclick=()=>{titleInput.value='';poemInput.value='';render()};
 function drag(el,key){let sx,sy,ox,oy;el.addEventListener('pointerdown',e=>{el.setPointerCapture(e.pointerId);el.classList.add('dragging');sx=e.clientX;sy=e.clientY;ox=positions[key].x;oy=positions[key].y});el.addEventListener('pointermove',e=>{if(!el.hasPointerCapture(e.pointerId))return;const r=canvas.getBoundingClientRect();positions[key].x=Math.max(2,Math.min(75,ox+(e.clientX-sx)/r.width*100));positions[key].y=Math.max(2,Math.min(90,oy+(e.clientY-sy)/r.height*100));render()});el.addEventListener('pointerup',()=>el.classList.remove('dragging'))}drag(title,'title');drag(poem,'poem');
 function getSaved(){return JSON.parse(localStorage.getItem('ghaz-amin-poems')||'[]')}function setSaved(a){localStorage.setItem('ghaz-amin-poems',JSON.stringify(a))}function listSaved(){const a=getSaved();savedList.innerHTML=a.length?'':'<div class="status" style="margin-top:10px">No saved poems yet.</div>';a.forEach((p,i)=>{const d=document.createElement('div');d.className='saved';const s=document.createElement('span');s.textContent=p.name;const b=document.createElement('button');b.textContent='Load';b.onclick=()=>{titleInput.value=p.title;poemInput.value=p.poem;penName.value=p.penName;font.value=p.font;titleSize.value=p.titleSize;poemSize.value=p.poemSize;positions=p.positions;render()};d.append(s,b);savedList.appendChild(d)})}save.onclick=()=>{const a=getSaved();a.unshift({name:saveName.value||titleInput.value||'Untitled',title:titleInput.value,poem:poemInput.value,penName:penName.value,font:font.value,titleSize:titleSize.value,poemSize:poemSize.value,positions});setSaved(a);saveName.value='';listSaved()};
-export.onclick=async()=>{const src=bg,img=new Image();img.src=src.src;await new Promise((r,j)=>{img.onload=r;img.onerror=j});const w=1440,h=1800,c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d');const scale=Math.max(w/img.naturalWidth,h/img.naturalHeight),dw=img.naturalWidth*scale,dh=img.naturalHeight*scale;ctx.drawImage(img,(w-dw)/2,(h-dh)/2,dw,dh);if(shadeToggle.checked){const g=ctx.createLinearGradient(0,0,w,0);g.addColorStop(0,'rgba(0,0,0,.55)');g.addColorStop(.78,'rgba(0,0,0,.05)');ctx.fillStyle=g;ctx.fillRect(0,0,w,h)}ctx.fillStyle='#f4f0e8';ctx.textBaseline='top';ctx.shadowColor='rgba(0,0,0,.5)';ctx.shadowBlur=16;ctx.font=`600 ${+titleSize.value*2}px '${font.value}'`;ctx.fillText(titleInput.value,positions.title.x/100*w,positions.title.y/100*h);ctx.font=`400 ${+poemSize.value*2}px '${font.value}'`;ctx.shadowBlur=10;let y=positions.poem.y/100*h;for(const line of poemInput.value.split('\n')){ctx.fillText(line,positions.poem.x/100*w,y);y+=poemSize.value*2*1.42}ctx.shadowBlur=0;ctx.globalAlpha=.78;ctx.font=`500 20px 'DM Sans'`;ctx.fillText(('SEBUAH PUISI OLEH '+(penName.value||'ghaz.amin')).toUpperCase(),positions.poem.x/100*w,h*.95);const a=document.createElement('a');a.download=(titleInput.value||'poetry-poster').replace(/[^a-z0-9]+/gi,'-').toLowerCase()+'.png';a.href=c.toDataURL('image/png');a.click()};
+async function waitForImage(img){
+  if(img.complete && img.naturalWidth > 0) return;
+  await new Promise((resolve,reject)=>{
+    img.addEventListener('load',resolve,{once:true});
+    img.addEventListener('error',()=>reject(new Error('Background image could not be loaded.')),{once:true});
+  });
+}
+
+async function waitForFonts(){
+  if(document.fonts && document.fonts.ready) await document.fonts.ready;
+}
+
+function loadImageForExport(source){
+  return new Promise((resolve,reject)=>{
+    const image = new Image();
+    image.onload = ()=>resolve(image);
+    image.onerror = ()=>reject(new Error('Could not load the background image for export.'));
+    image.src = source;
+  });
+}
+
+function drawTextBlock(ctx, text, x, y, maxWidth, lineHeight){
+  const lines = String(text || '').split('\n');
+  let cy = y;
+  for(const rawLine of lines){
+    // Preserve intentional blank lines.
+    if(rawLine === ''){
+      cy += lineHeight;
+      continue;
+    }
+
+    // Wrap long lines so they stay inside the poster.
+    const words = rawLine.split(/\s+/);
+    let line = '';
+    for(const word of words){
+      const test = line ? line + ' ' + word : word;
+      if(ctx.measureText(test).width > maxWidth && line){
+        ctx.fillText(line,x,cy);
+        cy += lineHeight;
+        line = word;
+      }else{
+        line = test;
+      }
+    }
+    if(line){
+      ctx.fillText(line,x,cy);
+      cy += lineHeight;
+    }
+  }
+}
+
+export.onclick=async()=>{
+  const button = export;
+  const originalText = button.textContent;
+  button.disabled = true;
+  button.textContent = 'Exporting…';
+
+  try{
+    await waitForImage(bg);
+    await waitForFonts();
+
+    const source = bg.src;
+    if(!source) throw new Error('No background image selected.');
+
+    const img = await loadImageForExport(source);
+
+    const W = 1440;
+    const H = 1800;
+    const out = document.createElement('canvas');
+    out.width = W;
+    out.height = H;
+
+    const ctx = out.getContext('2d', {alpha:false});
+    if(!ctx) throw new Error('Your browser could not create the export canvas.');
+
+    // Background: same cover behaviour as the editor.
+    const scale = Math.max(W / img.naturalWidth, H / img.naturalHeight);
+    const dw = img.naturalWidth * scale;
+    const dh = img.naturalHeight * scale;
+    ctx.drawImage(img, (W-dw)/2, (H-dh)/2, dw, dh);
+
+    // Overlay.
+    if(shadeToggle.checked){
+      const gradient = ctx.createLinearGradient(0,0,W,0);
+      gradient.addColorStop(0,'rgba(0,0,0,.55)');
+      gradient.addColorStop(.78,'rgba(0,0,0,.05)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0,0,W,H);
+    }
+
+    const titleFont = font.value || 'Cormorant Garamond';
+    const titlePx = Number(titleSize.value) * 2;
+    const poemPx = Number(poemSize.value) * 2;
+    const x = positions.title.x / 100 * W;
+    const titleY = positions.title.y / 100 * H;
+    const poemX = positions.poem.x / 100 * W;
+    const poemY = positions.poem.y / 100 * H;
+
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#f4f0e8';
+    ctx.shadowColor = 'rgba(0,0,0,.55)';
+    ctx.shadowBlur = 16;
+
+    // Title
+    ctx.font = `600 ${titlePx}px "${titleFont}"`;
+    ctx.fillText(titleInput.value || 'Untitled', x, titleY);
+
+    // Poem
+    ctx.font = `400 ${poemPx}px "${titleFont}"`;
+    ctx.shadowBlur = 10;
+    drawTextBlock(ctx, poemInput.value, poemX, poemY, W * 0.80, poemPx * 1.42);
+
+    // Pen name
+    ctx.shadowBlur = 0;
+    ctx.globalAlpha = .78;
+    ctx.font = `500 20px "DM Sans"`;
+    ctx.fillText(
+      ('SEBUAH PUISI OLEH ' + (penName.value || 'ghaz.amin')).toUpperCase(),
+      poemX,
+      H * .95
+    );
+    ctx.globalAlpha = 1;
+
+    // Use toBlob instead of toDataURL for a more reliable download.
+    const blob = await new Promise((resolve,reject)=>{
+      out.toBlob(b=>{
+        if(b) resolve(b);
+        else reject(new Error('PNG creation failed.'));
+      },'image/png');
+    });
+
+    const filename = (titleInput.value || 'poetry-poster')
+      .replace(/[^a-z0-9]+/gi,'-')
+      .replace(/^-+|-+$/g,'')
+      .toLowerCase() + '.png';
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+
+    setTimeout(()=>{
+      a.remove();
+      URL.revokeObjectURL(url);
+    },1500);
+
+  }catch(err){
+    console.error('PNG export failed:',err);
+    alert('PNG export failed: ' + (err.message || err));
+  }finally{
+    button.disabled = false;
+    button.textContent = originalText;
+  }
+};
 let deferredPrompt;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;installBtn.style.display='block';installBtn.onclick=async()=>{deferredPrompt.prompt();deferredPrompt=null}});if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');render();listSaved();
 </script></body></html>
