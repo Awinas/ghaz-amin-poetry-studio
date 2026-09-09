@@ -1,12 +1,15 @@
-# ghaz.amin Poetry Studio V4
+# ghaz.amin Poetry Studio V5
 
-A client-side poetry poster studio for GitHub Pages.
+V5 adds an editable **Credit / Signature Text** field.
 
-## V4 fixes
-- All controls use explicit event handlers and element IDs.
-- No reliance on browser-created global variables such as `export`, `title`, or `poem`.
-- PNG export uses a real canvas and `toBlob()`.
-- Upload, sample photo, clear, format, typography, image controls, archive, undo/redo, and drag controls are wired.
-- Service worker cache bumped to v6.
+Example:
+`SEBUAH PUISI OLEH GHAZ.AMIN`
 
-Upload all files in this folder to the repository root and overwrite the old versions.
+You can replace it with any text, for example:
+- `SEBUAH PUISI OLEH GHAZ.AMIN`
+- `PUISI OLEH GHAZ.AMIN`
+- `© GHAZ.AMIN`
+- `ghaz.amin`
+- Any custom signature
+
+Upload all files to the GitHub repository root and overwrite the previous versions. Then hard-refresh the GitHub Pages site with Ctrl+Shift+R.

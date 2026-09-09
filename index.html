@@ -113,6 +113,10 @@ dek satu senyuman kecil daripadanya.</textarea>
   <div class="section">
     <div class="label">Pen name</div>
     <input id="penNameInput" type="text" value="ghaz.amin">
+    <div style="height:10px"></div>
+    <div class="label">Credit / signature text</div>
+    <input id="creditInput" type="text" value="SEBUAH PUISI OLEH GHAZ.AMIN">
+    <div class="status" style="margin-top:6px">This text appears at the bottom of the poster and can be edited freely.</div>
   </div>
 
   <div class="section">
@@ -259,6 +263,7 @@ function snapshot() {
     title:$("titleInput").value,
     poem:$("poemInput").value,
     penName:$("penNameInput").value,
+    credit:$("creditInput").value,
     font:$("fontSelect").value,
     titleSize:$("titleSize").value,
     poemSize:$("poemSize").value,
@@ -281,6 +286,7 @@ function restore(s) {
   $("titleInput").value=s.title ?? "";
   $("poemInput").value=s.poem ?? "";
   $("penNameInput").value=s.penName ?? "ghaz.amin";
+  $("creditInput").value=s.credit ?? ("SEBUAH PUISI OLEH " + ($("penNameInput").value || "ghaz.amin")).toUpperCase();
   $("fontSelect").value=s.font ?? "Cormorant Garamond";
   $("titleSize").value=s.titleSize ?? 48;
   $("poemSize").value=s.poemSize ?? 20;
@@ -332,7 +338,7 @@ function render() {
   $("poster").style.aspectRatio=f.ratio;
   $("titleLayer").textContent=$("titleInput").value || "Untitled";
   $("poemLayer").textContent=$("poemInput").value;
-  $("creditLayer").textContent=("SEBUAH PUISI OLEH " + ($("penNameInput").value || "ghaz.amin")).toUpperCase();
+  $("creditLayer").textContent=$("creditInput").value || "";
 
   const font=$("fontSelect").value;
   $("titleLayer").style.fontFamily=`"${font}",serif`;
@@ -575,7 +581,7 @@ function drawPosterToCanvas(img,W,H) {
   ctx.shadowBlur=0;
   ctx.globalAlpha=.78;
   ctx.font=`500 ${20*scaleX}px "DM Sans"`;
-  ctx.fillText(("SEBUAH PUISI OLEH "+($("penNameInput").value||"ghaz.amin")).toUpperCase(),poemX,H*.95);
+  ctx.fillText($("creditInput").value || "",poemX,H*.95);
   ctx.globalAlpha=1;
 
   return out;
@@ -696,7 +702,7 @@ document.querySelectorAll("[data-format]").forEach(btn=>{
   });
 });
 
-["titleInput","poemInput","penNameInput","fontSelect","titleSize","poemSize","titleOpacity","poemOpacity","shadeToggle","vignetteToggle","imageZoom","imageBrightness","imageY"].forEach(id=>{
+["titleInput","poemInput","penNameInput","creditInput","fontSelect","titleSize","poemSize","titleOpacity","poemOpacity","shadeToggle","vignetteToggle","imageZoom","imageBrightness","imageY"].forEach(id=>{
   const el=$(id);
   el.addEventListener("input",()=>{
     render();

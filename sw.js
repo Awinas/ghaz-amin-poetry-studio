@@ -1,4 +1,4 @@
-const CACHE='ghaz-amin-v6';
+const CACHE='ghaz-amin-v7';
 const ASSETS=['./','./index.html','./manifest.json','./sample.png','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()));
