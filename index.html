@@ -6,70 +6,61 @@
 <meta name="theme-color" content="#11151b">
 <meta name="description" content="ghaz.amin Poetry Studio">
 <link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon-192.png">
-<title>ghaz.amin • Poetry Studio</title>
+<title>ghaz.amin | Poetry Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
-:root{
- --bg:#090c10;--panel:#11151b;--panel2:#171c23;--line:#2b323c;--text:#f5efe3;
- --muted:#9aa3af;--accent:#d9c49a;--danger:#c98282;--shadow:0 22px 70px #0009;
-}
+:root{--bg:#090c10;--panel:#12161c;--panel2:#181d24;--line:#2a313b;--text:#f4f0e8;--muted:#929aa6;--accent:#d9c59c;--danger:#d88c8c}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,sans-serif}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
-button:disabled{opacity:.45;cursor:not-allowed}
-.app{display:grid;grid-template-columns:360px minmax(0,1fr);min-height:100vh}
-.sidebar{background:var(--panel);border-right:1px solid var(--line);padding:18px;overflow:auto;height:100vh}
-.brand{font-family:"Cormorant Garamond",serif;font-size:34px;line-height:1}
-.tag{font-size:11px;color:var(--muted);margin:4px 0 16px}
+button:disabled{opacity:.5;cursor:not-allowed}
+.app{display:grid;grid-template-columns:340px 1fr;min-height:100vh}
+.sidebar{background:var(--panel);border-right:1px solid var(--line);padding:18px;overflow:auto}
+.brand{font:600 34px/1 "Cormorant Garamond",serif}
+.tag{color:var(--muted);font-size:11px;margin:5px 0 18px}
 .section{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
-.label{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin:0 0 7px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
-input[type=text],input[type=number],textarea,select{
- width:100%;background:#0c1015;border:1px solid var(--line);color:var(--text);
- border-radius:9px;padding:10px;outline:none
-}
-textarea{min-height:210px;resize:vertical;line-height:1.5}
-input[type=range]{width:100%;accent-color:var(--accent)}
-.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:9px;padding:9px 10px}
-.btn:hover{border-color:#606a77}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#16130e;font-weight:700}
-.btn.danger{color:#e0aaaa}
-.btn.active{outline:2px solid var(--accent);outline-offset:1px}
-.file{width:100%;font-size:12px}
-.check{display:flex;gap:8px;align-items:center;font-size:12px;color:#d9dde3;margin-top:9px}
-.rangeRow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.help{font-size:10px;line-height:1.45;color:var(--muted);margin-top:7px}
-.swatches{display:flex;gap:7px;flex-wrap:wrap}
-.swatch{width:30px;height:30px;border-radius:50%;border:2px solid #555;cursor:pointer}
-.toolbar{height:62px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:9px 14px}
-.toolbar .grow{flex:1}.status{font-size:11px;color:var(--muted)}
-.workspace{min-width:0;display:flex;flex-direction:column;height:100vh}
-.stage{flex:1;display:flex;align-items:center;justify-content:center;overflow:auto;padding:28px;background:radial-gradient(circle at 50% 18%,#252e39 0,#090c10 58%)}
-.poster{position:relative;overflow:hidden;background:#222;box-shadow:var(--shadow);touch-action:none;user-select:none}
-.poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
-.overlay{position:absolute;inset:0;pointer-events:none}
-.element{position:absolute;z-index:3;cursor:move;white-space:pre-wrap;overflow:visible;touch-action:none}
-.element.selected{outline:1px dashed #e6d3a6;outline-offset:8px}
-.titleEl{font-weight:600;line-height:1.02}
-.poemEl{line-height:1.42}
-.creditEl{letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
-#emptyHint{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:#fff9;font-size:13px;z-index:5;pointer-events:none}
-.archiveItem{display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--line);padding:9px 0}
-.archiveItem span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
-.small{font-size:11px;padding:6px 8px}
-.templateBtn{min-height:42px}
-.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;z-index:20;padding:20px}
-.modal.open{display:flex}
-.modalCard{width:min(720px,95vw);max-height:85vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
-.modalGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.modalGrid .btn{text-align:left}
-@media(max-width:900px){
- .app{grid-template-columns:1fr}.sidebar{height:auto;order:2;border-right:0;border-top:1px solid var(--line)}
- .workspace{height:72vh;min-height:520px}.toolbar{position:sticky;top:0;z-index:10}
- .stage{padding:12px}.poster{width:min(92vw,650px)}
+.label{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin:0 0 7px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+input[type=text],textarea,select{width:100%;background:#0d1116;border:1px solid var(--line);color:var(--text);border-radius:9px;padding:10px;outline:none}
+input[type=text]:focus,textarea:focus,select:focus{border-color:#6b7480}
+textarea{min-height:220px;resize:vertical;line-height:1.5}
+.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:9px;padding:10px}
+.btn:hover{border-color:#68717d}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#17130d;font-weight:700}
+.btn.danger{color:var(--danger)}
+.range{width:100%;accent-color:var(--accent)}
+.check{display:flex;align-items:center;gap:8px;color:#d8dbe0;font-size:13px;margin-top:10px}
+.status{font-size:11px;color:var(--muted);line-height:1.45}
+.saved{display:flex;gap:7px;align-items:center;border-bottom:1px solid var(--line);padding:9px 0}
+.saved span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}
+.saved button{background:transparent;border:0;color:var(--accent);padding:3px 5px}
+.workspace{min-width:0;display:flex;flex-direction:column}
+.toolbar{height:60px;padding:10px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hint{color:var(--muted);font-size:12px}
+.toolbar .btns{width:250px}
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:24px;overflow:auto;background:radial-gradient(circle at 50% 20%,#222a33 0,#090c10 55%)}
+.poster{position:relative;width:min(700px,88vw);aspect-ratio:4/5;background:#222;overflow:hidden;box-shadow:0 25px 80px #000c;touch-action:none;user-select:none}
+.poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:center;pointer-events:none}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.05) 78%)}
+.vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 48%,rgba(0,0,0,.52) 100%);opacity:0}
+.textLayer{position:absolute;left:0;width:100%;padding:0 10%;white-space:pre-wrap;cursor:grab;text-shadow:0 2px 12px #0009}
+.textLayer.dragging{cursor:grabbing}
+.titleLayer{font:600 48px/1.04 "Cormorant Garamond",serif}
+.poemLayer{font:400 20px/1.42 "Cormorant Garamond",serif}
+.credit{position:absolute;left:10%;bottom:4%;font:500 10px/1 "DM Sans",sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.78}
+.mobileNote{display:none}
+@media(max-width:850px){
+ .app{grid-template-columns:1fr}
+ .sidebar{order:2;border-right:0;border-top:1px solid var(--line)}
+ .workspace{min-height:70vh}
+ .toolbar{position:sticky;top:0;z-index:10}
+ .stage{padding:12px}
+ .poster{width:min(650px,94vw)}
+ .mobileNote{display:block}
 }
 </style>
 </head>
@@ -77,34 +68,15 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 <div class="app">
 <aside class="sidebar">
   <div class="brand">ghaz.amin</div>
-  <div class="tag">Poetry Studio · create / archive / export</div>
+  <div class="tag">Poetry Studio · private archive</div>
 
   <div class="section">
     <div class="label">Background</div>
-    <input id="photo" class="file" type="file" accept="image/*">
-    <div class="grid2" style="margin-top:8px">
-      <button type="button" class="btn" id="useSample">Gadis Kataha</button>
-      <button type="button" class="btn" id="clearPhoto">Remove</button>
-    </div>
-    <div class="help">Your photo stays in this browser. Nothing is uploaded.</div>
-  </div>
-
-  <div class="section">
-    <div class="label">Format</div>
-    <div class="grid3">
-      <button type="button" class="btn templateBtn" data-format="portrait">4:5<br><small>Portrait</small></button>
-      <button type="button" class="btn templateBtn" data-format="square">1:1<br><small>Square</small></button>
-      <button type="button" class="btn templateBtn" data-format="story">9:16<br><small>Story</small></button>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="label">Templates</div>
-    <div class="grid2">
-      <button type="button" class="btn templateBtn" data-template="minimal">Minimal</button>
-      <button type="button" class="btn templateBtn" data-template="left">Left Editorial</button>
-      <button type="button" class="btn templateBtn" data-template="center">Centered</button>
-      <button type="button" class="btn templateBtn" data-template="bottom">Bottom Poetry</button>
+    <input id="photoInput" type="file" accept="image/*">
+    <div style="height:8px"></div>
+    <div class="btns">
+      <button type="button" class="btn" id="useSampleBtn">Use Gadis Kataha</button>
+      <button type="button" class="btn" id="clearPhotoBtn">Remove photo</button>
     </div>
   </div>
 
@@ -140,456 +112,633 @@ dek satu senyuman kecil daripadanya.</textarea>
 
   <div class="section">
     <div class="label">Pen name</div>
-    <input id="penName" type="text" value="ghaz.amin">
+    <input id="penNameInput" type="text" value="ghaz.amin">
   </div>
 
   <div class="section">
-    <div class="label">Selected text</div>
-    <div class="grid2">
-      <button type="button" class="btn active" id="selectTitle">Title</button>
-      <button type="button" class="btn" id="selectPoem">Poem</button>
+    <div class="label">Format</div>
+    <div class="btns">
+      <button type="button" class="btn" data-format="portrait">4:5 Portrait</button>
+      <button type="button" class="btn" data-format="square">1:1 Square</button>
+      <button type="button" class="btn" data-format="story">9:16 Story</button>
+      <button type="button" class="btn" data-format="wide">16:9 Wide</button>
     </div>
-    <div class="rangeRow" style="margin-top:10px">
-      <div><div class="label">Size</div><input id="sizeRange" type="range" min="12" max="84" value="48"></div>
-      <div><div class="label">Opacity</div><input id="opacityRange" type="range" min="10" max="100" value="100"></div>
+  </div>
+
+  <div class="section">
+    <div class="label">Typography</div>
+    <select id="fontSelect">
+      <option value="Cormorant Garamond">Cormorant Garamond</option>
+      <option value="Playfair Display">Playfair Display</option>
+      <option value="DM Sans">DM Sans</option>
+    </select>
+    <div style="height:10px"></div>
+    <div class="row">
+      <div><div class="label">Title size</div><input id="titleSize" class="range" type="range" min="24" max="100" value="48"></div>
+      <div><div class="label">Poem size</div><input id="poemSize" class="range" type="range" min="12" max="42" value="20"></div>
     </div>
-    <div class="rangeRow">
-      <div><div class="label">Line height</div><input id="lineRange" type="range" min="90" max="190" value="142"></div>
-      <div><div class="label">Letter spacing</div><input id="letterRange" type="range" min="-3" max="12" value="0"></div>
+    <div style="height:10px"></div>
+    <div class="row">
+      <div><div class="label">Title opacity</div><input id="titleOpacity" class="range" type="range" min="20" max="100" value="100"></div>
+      <div><div class="label">Poem opacity</div><input id="poemOpacity" class="range" type="range" min="20" max="100" value="100"></div>
     </div>
-    <div class="grid2">
-      <select id="fontSelect">
-        <option value="Cormorant Garamond">Cormorant Garamond</option>
-        <option value="Playfair Display">Playfair Display</option>
-        <option value="Libre Baskerville">Libre Baskerville</option>
-        <option value="DM Sans">DM Sans</option>
-      </select>
-      <select id="alignSelect">
-        <option value="left">Left</option>
-        <option value="center">Center</option>
-        <option value="right">Right</option>
-      </select>
-    </div>
-    <div class="swatches" style="margin-top:9px">
-      <button type="button" class="swatch" data-color="#f5efe3" style="background:#f5efe3" title="Cream"></button>
-      <button type="button" class="swatch" data-color="#ffffff" style="background:#fff" title="White"></button>
-      <button type="button" class="swatch" data-color="#d9c49a" style="background:#d9c49a" title="Gold"></button>
-      <button type="button" class="swatch" data-color="#d8d8d8" style="background:#d8d8d8" title="Silver"></button>
-    </div>
+    <label class="check"><input id="shadeToggle" type="checkbox" checked> Dark overlay</label>
+    <label class="check"><input id="vignetteToggle" type="checkbox"> Vignette</label>
   </div>
 
   <div class="section">
     <div class="label">Image</div>
-    <div class="rangeRow">
-      <div><div class="label">Zoom</div><input id="zoomRange" type="range" min="100" max="220" value="100"></div>
-      <div><div class="label">Brightness</div><input id="brightnessRange" type="range" min="40" max="140" value="100"></div>
+    <div class="row">
+      <div><div class="label">Zoom</div><input id="imageZoom" class="range" type="range" min="100" max="180" value="100"></div>
+      <div><div class="label">Brightness</div><input id="imageBrightness" class="range" type="range" min="40" max="140" value="100"></div>
     </div>
-    <div class="grid2">
-      <button type="button" class="btn" id="imageUp">Image ↑</button><button type="button" class="btn" id="imageDown">Image ↓</button>
-    </div>
-    <label class="check"><input id="overlayToggle" type="checkbox" checked> Dark overlay</label>
-    <div class="rangeRow">
-      <div><div class="label">Overlay</div><input id="overlayRange" type="range" min="0" max="90" value="45"></div>
-      <div><div class="label">Vignette</div><input id="vignetteRange" type="range" min="0" max="90" value="0"></div>
-    </div>
+    <div style="height:10px"></div>
+    <div><div class="label">Image vertical</div><input id="imageY" class="range" type="range" min="-50" max="50" value="0"></div>
   </div>
 
   <div class="section">
     <div class="label">Layout</div>
-    <div class="grid2">
-      <button type="button" class="btn" id="resetLayout">Reset layout</button>
-      <button type="button" class="btn" id="centerPoem">Lower poem</button>
+    <div class="btns">
+      <button type="button" class="btn" id="resetBtn">Reset</button>
+      <button type="button" class="btn" id="lowerPoemBtn">Lower poem</button>
+      <button type="button" class="btn" id="centerTitleBtn">Center title</button>
+      <button type="button" class="btn" id="centerPoemBtn">Center poem</button>
     </div>
-    <div class="help">Drag title or poem directly on the poster. Use mouse/touch.</div>
+    <div class="status" style="margin-top:8px">Drag the title or poem directly on the poster.</div>
   </div>
 
   <div class="section">
     <div class="label">Archive</div>
-    <input id="saveName" type="text" placeholder="Poem name">
-    <div class="grid2" style="margin-top:8px">
-      <button type="button" class="btn primary" id="saveBtn">Save</button>
-      <button type="button" class="btn" id="manageBtn">Manage</button>
-    </div>
+    <input id="saveNameInput" type="text" placeholder="Poem name">
+    <div style="height:8px"></div>
+    <button type="button" class="btn primary" id="saveBtn" style="width:100%">Save to this browser</button>
     <div id="savedList"></div>
   </div>
 
   <div class="section">
-    <button type="button" class="btn" id="installBtn" style="width:100%;display:none">Install ghaz.amin Studio</button>
+    <button type="button" class="btn" id="undoBtn">↶ Undo</button>
+    <button type="button" class="btn" id="redoBtn">↷ Redo</button>
   </div>
+
+  <div class="section mobileNote status">Tip: if a browser blocks a download, the app will open the PNG in a new tab so you can save it manually.</div>
 </aside>
 
 <main class="workspace">
   <div class="toolbar">
-    <div class="status" id="status">Ready · 1440 × 1800</div>
-    <div class="grow"></div>
-    <button type="button" class="btn" id="undoBtn">Undo</button>
-    <button type="button" class="btn" id="redoBtn">Redo</button>
-    <button type="button" class="btn" id="clearBtn">Clear</button>
-    <button type="button" class="btn primary" id="exportBtn">Export PNG</button>
+    <div id="statusText" class="hint">Ready · 1440 × 1800</div>
+    <div class="btns">
+      <button type="button" class="btn" id="clearBtn">Clear text</button>
+      <button type="button" class="btn primary" id="exportBtn">Export PNG</button>
+    </div>
   </div>
   <div class="stage">
     <div class="poster" id="poster">
-      <img id="bg" src="sample.jpg" alt="">
-      <div class="overlay" id="overlay"></div>
-      <div class="element titleEl" id="titleEl"></div>
-      <div class="element poemEl" id="poemEl"></div>
-      <div class="element creditEl" id="creditEl"></div>
-      <div id="emptyHint">Choose a background photo to begin</div>
+      <img id="bgImage" src="sample.png" alt="">
+      <div class="shade" id="shadeLayer"></div>
+      <div class="vignette" id="vignetteLayer"></div>
+      <div class="textLayer titleLayer" id="titleLayer"></div>
+      <div class="textLayer poemLayer" id="poemLayer"></div>
+      <div class="credit" id="creditLayer"></div>
     </div>
   </div>
 </main>
 </div>
 
-<div class="modal" id="modal">
- <div class="modalCard">
-  <div style="display:flex;align-items:center;gap:10px">
-   <h2 style="font-family:'Cormorant Garamond';margin:0;flex:1">Poetry Archive</h2>
-   <button type="button" class="btn" id="closeModal">Close</button>
-  </div>
-  <div id="archiveGrid" class="modalGrid" style="margin-top:14px"></div>
- </div>
-</div>
-
 <script>
-'use strict';
+(() => {
+"use strict";
 
-window.addEventListener('error', e => {
-  console.error('ghaz.amin Studio error:', e.error || e.message);
-  const status = document.getElementById('status');
-  if(status) status.textContent = 'App error: refresh the page';
-});
-
-window.addEventListener('unhandledrejection', e => {
-  console.error('ghaz.amin Studio promise error:', e.reason);
-});
-
-const $ = id => document.getElementById(id);
-
-function flash(message){
-  const el = $('status');
-  if(el){ el.textContent = message; clearTimeout(window.__flashTimer);
-    window.__flashTimer = setTimeout(()=>{ el.textContent = `Ready · ${formats[state.format].w} × ${formats[state.format].h}`; }, 1800);
-  }
-}
-
-const state = {
-  format: 'portrait',
-  template: 'minimal',
-  selected: 'title',
-  bgSrc: 'sample.jpg',
-  imageY: 50,
-  zoom: 100,
-  brightness: 100,
-  overlayOn: true,
-  overlay: 45,
-  vignette: 0,
-  title: {x:10,y:10,size:48,opacity:100,line:102,letter:0,font:'Cormorant Garamond',align:'left',color:'#f5efe3'},
-  poem: {x:10,y:28,size:20,opacity:100,line:142,letter:0,font:'Cormorant Garamond',align:'left',color:'#f5efe3'},
-  credit: {x:10,y:94,size:10,color:'#f5efe3'},
-  history: [], future: []
-};
+const $ = (id) => document.getElementById(id);
 
 const formats = {
-  portrait:{w:1440,h:1800,ratio:'4 / 5'},
-  square:{w:1800,h:1800,ratio:'1 / 1'},
-  story:{w:1080,h:1920,ratio:'9 / 16'}
+  portrait:{w:1440,h:1800,ratio:"4 / 5"},
+  square:{w:1800,h:1800,ratio:"1 / 1"},
+  story:{w:1080,h:1920,ratio:"9 / 16"},
+  wide:{w:1920,h:1080,ratio:"16 / 9"}
 };
 
-function currentText(){
-  return {title:$('titleInput').value,poem:$('poemInput').value,pen:$('penName').value};
-}
-function snapshot(){
-  return JSON.stringify({
-    format:state.format,template:state.template,bgSrc:state.bgSrc,imageY:state.imageY,zoom:state.zoom,
-    brightness:state.brightness,overlayOn:state.overlayOn,overlay:state.overlay,vignette:state.vignette,
-    title:{...state.title},poem:{...state.poem},credit:{...state.credit},text:currentText()
-  });
-}
-function restore(s){
-  const x=JSON.parse(s);
-  Object.assign(state,{format:x.format,template:x.template,bgSrc:x.bgSrc,imageY:x.imageY,zoom:x.zoom,
-    brightness:x.brightness,overlayOn:x.overlayOn,overlay:x.overlay,vignette:x.vignette,
-    title:x.title,poem:x.poem,credit:x.credit});
-  $('titleInput').value=x.text.title;$('poemInput').value=x.text.poem;$('penName').value=x.text.pen;
-  $('bg').src=state.bgSrc;
-  syncControls();render();
-}
-function pushHistory(){
-  const s=snapshot();
-  if(state.history[state.history.length-1]!==s){
-    state.history.push(s); if(state.history.length>40)state.history.shift(); state.future=[];
+const defaultPositions = {
+  title:{x:10,y:10},
+  poem:{x:10,y:24}
+};
+
+const state = {
+  format:"portrait",
+  positions:JSON.parse(JSON.stringify(defaultPositions)),
+  history:[],
+  future:[],
+  imageSrc:"sample.png",
+  imageIsData:false,
+  selected:"title"
+};
+
+function safeLocalGet(key, fallback) {
+  try {
+    const v = localStorage.getItem(key);
+    return v === null ? fallback : v;
+  } catch (e) {
+    return fallback;
   }
 }
-function undo(){
-  if(state.history.length<2){flash('Nothing to undo');return}
-  const current=state.history.pop();state.future.push(current);
-  restore(state.history[state.history.length-1]);flash('Undo ✓');
-}
-function redo(){
-  if(!state.future.length){flash('Nothing to redo');return}
-  const s=state.future.pop();state.history.push(s);restore(s);flash('Redo ✓');
+
+function safeLocalSet(key, value) {
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch (e) {
+    return false;
+  }
 }
 
-function setPosterSize(){
+function setStatus(message) {
+  $("statusText").textContent = message;
+}
+
+function snapshot() {
+  return {
+    title:$("titleInput").value,
+    poem:$("poemInput").value,
+    penName:$("penNameInput").value,
+    font:$("fontSelect").value,
+    titleSize:$("titleSize").value,
+    poemSize:$("poemSize").value,
+    titleOpacity:$("titleOpacity").value,
+    poemOpacity:$("poemOpacity").value,
+    shade:$("shadeToggle").checked,
+    vignette:$("vignetteToggle").checked,
+    zoom:$("imageZoom").value,
+    brightness:$("imageBrightness").value,
+    imageY:$("imageY").value,
+    positions:JSON.parse(JSON.stringify(state.positions)),
+    format:state.format,
+    imageSrc:state.imageSrc,
+    imageIsData:state.imageIsData
+  };
+}
+
+function restore(s) {
+  if (!s) return;
+  $("titleInput").value=s.title ?? "";
+  $("poemInput").value=s.poem ?? "";
+  $("penNameInput").value=s.penName ?? "ghaz.amin";
+  $("fontSelect").value=s.font ?? "Cormorant Garamond";
+  $("titleSize").value=s.titleSize ?? 48;
+  $("poemSize").value=s.poemSize ?? 20;
+  $("titleOpacity").value=s.titleOpacity ?? 100;
+  $("poemOpacity").value=s.poemOpacity ?? 100;
+  $("shadeToggle").checked=s.shade !== false;
+  $("vignetteToggle").checked=!!s.vignette;
+  $("imageZoom").value=s.zoom ?? 100;
+  $("imageBrightness").value=s.brightness ?? 100;
+  $("imageY").value=s.imageY ?? 0;
+  state.positions=JSON.parse(JSON.stringify(s.positions || defaultPositions));
+  state.format=s.format || "portrait";
+  state.imageSrc=s.imageSrc || "sample.png";
+  state.imageIsData=!!s.imageIsData;
+  $("bgImage").src=state.imageSrc;
+  render();
+}
+
+function pushHistory() {
+  state.history.push(snapshot());
+  if(state.history.length > 50) state.history.shift();
+  state.future=[];
+}
+
+function undo() {
+  if(state.history.length < 2) {
+    setStatus("Nothing to undo");
+    return;
+  }
+  const current=state.history.pop();
+  state.future.push(current);
+  restore(state.history[state.history.length-1]);
+  setStatus("Undo ✓");
+}
+
+function redo() {
+  if(!state.future.length) {
+    setStatus("Nothing to redo");
+    return;
+  }
+  const next=state.future.pop();
+  state.history.push(next);
+  restore(next);
+  setStatus("Redo ✓");
+}
+
+function render() {
   const f=formats[state.format];
-  const stage=$('.stage');
-  const maxW=Math.min(stage.clientWidth-40,700);
-  const maxH=stage.clientHeight-40;
-  let w=maxW,h=w*f.h/f.w;
-  if(h>maxH){h=maxH;w=h*f.w/f.h;}
-  $('poster').style.width=w+'px';$('poster').style.height=h+'px';$('poster').style.aspectRatio=f.w+'/'+f.h;
-  $('status').textContent=`Ready · ${f.w} × ${f.h}`;
+  $("poster").style.aspectRatio=f.ratio;
+  $("titleLayer").textContent=$("titleInput").value || "Untitled";
+  $("poemLayer").textContent=$("poemInput").value;
+  $("creditLayer").textContent=("SEBUAH PUISI OLEH " + ($("penNameInput").value || "ghaz.amin")).toUpperCase();
+
+  const font=$("fontSelect").value;
+  $("titleLayer").style.fontFamily=`"${font}",serif`;
+  $("poemLayer").style.fontFamily=`"${font}",serif`;
+  $("titleLayer").style.fontSize=$("titleSize").value+"px";
+  $("poemLayer").style.fontSize=$("poemSize").value+"px";
+  $("titleLayer").style.opacity=Number($("titleOpacity").value)/100;
+  $("poemLayer").style.opacity=Number($("poemOpacity").value)/100;
+
+  for(const key of ["title","poem"]) {
+    const el=key==="title"?$("titleLayer"):$("poemLayer");
+    el.style.left=state.positions[key].x+"%";
+    el.style.top=state.positions[key].y+"%";
+  }
+
+  $("shadeLayer").style.display=$("shadeToggle").checked?"block":"none";
+  $("vignetteLayer").style.opacity=$("vignetteToggle").checked?".75":"0";
+
+  const zoom=Number($("imageZoom").value)/100;
+  const y=Number($("imageY").value);
+  const brightness=Number($("imageBrightness").value)/100;
+  $("bgImage").style.transform=`translateY(${y}%) scale(${zoom})`;
+  $("bgImage").style.filter=`brightness(${brightness})`;
+
+  const px=Math.round(f.w)+" × "+Math.round(f.h);
+  setStatus("Ready · "+px);
 }
-function render(){
-  setPosterSize();
-  $('titleEl').textContent=$('titleInput').value||'Untitled';
-  $('poemEl').textContent=$('poemInput').value||'';
-  $('creditEl').textContent=('SEBUAH PUISI OLEH '+($('penName').value||'ghaz.amin')).toUpperCase();
 
-  ['title','poem'].forEach(k=>{
-    const s=state[k],el=$(k+'El');
-    el.style.left=s.x+'%';el.style.top=s.y+'%';el.style.width='80%';
-    el.style.fontFamily=`"${s.font}"`;el.style.fontSize=s.size+'px';
-    el.style.opacity=s.opacity/100;el.style.lineHeight=s.line/100;
-    el.style.letterSpacing=s.letter+'px';el.style.textAlign=s.align;el.style.color=s.color;
-  });
-  $('creditEl').style.left=state.credit.x+'%';$('creditEl').style.top=state.credit.y+'%';
-  $('creditEl').style.fontSize=state.credit.size+'px';$('creditEl').style.color=state.credit.color;
-  $('bg').style.transform=`translateY(${state.imageY-50}%) scale(${state.zoom/100})`;
-  $('bg').style.filter=`brightness(${state.brightness}%)`;
-  $('overlay').style.display=state.overlayOn?'block':'none';
-  $('overlay').style.background=state.vignette>0
-    ? `radial-gradient(circle, transparent 20%, rgba(0,0,0,${state.vignette/100}) 100%),linear-gradient(90deg,rgba(0,0,0,${state.overlay/100}),rgba(0,0,0,${state.overlay/100*.15}))`
-    : `linear-gradient(90deg,rgba(0,0,0,${state.overlay/100}),rgba(0,0,0,${state.overlay/100*.15}))`;
-  $('titleEl').classList.toggle('selected',state.selected==='title');
-  $('poemEl').classList.toggle('selected',state.selected==='poem');
-  syncSelectedButtons();
+function changed() {
+  pushHistory();
+  render();
 }
-function syncSelectedButtons(){
-  $('selectTitle').classList.toggle('active',state.selected==='title');
-  $('selectPoem').classList.toggle('active',state.selected==='poem');
-  const s=state[state.selected];
-  $('sizeRange').value=s.size;$('opacityRange').value=s.opacity;$('lineRange').value=s.line;$('letterRange').value=s.letter;
-  $('fontSelect').value=s.font;$('alignSelect').value=s.align;
+
+function loadFile(file) {
+  if(!file) return;
+  if(!file.type.startsWith("image/")) {
+    alert("Please choose an image file.");
+    return;
+  }
+  const reader=new FileReader();
+  reader.onload=() => {
+    state.imageSrc=reader.result;
+    state.imageIsData=true;
+    $("bgImage").src=reader.result;
+    pushHistory();
+    render();
+    setStatus("Photo loaded ✓");
+  };
+  reader.onerror=()=>alert("Could not read that image.");
+  reader.readAsDataURL(file);
 }
-function syncControls(){
-  $('zoomRange').value=state.zoom;$('brightnessRange').value=state.brightness;
-  $('overlayToggle').checked=state.overlayOn;$('overlayRange').value=state.overlay;$('vignetteRange').value=state.vignette;
-  syncSelectedButtons();
+
+function useSample() {
+  state.imageSrc="sample.png";
+  state.imageIsData=false;
+  $("bgImage").src="sample.png";
+  pushHistory();
+  render();
+  setStatus("Gadis Kataha photo loaded ✓");
 }
-function mutate(fn){pushHistory();fn();render();}
 
-$('titleInput').addEventListener('input',()=>{render();});
-$('poemInput').addEventListener('input',()=>{render();});
-$('penName').addEventListener('input',()=>{render();});
-
-$('selectTitle').onclick=()=>{state.selected='title';syncSelectedButtons();render()};
-$('selectPoem').onclick=()=>{state.selected='poem';syncSelectedButtons();render()};
-
-$('sizeRange').oninput=e=>{state[state.selected].size=+e.target.value;render()};
-$('opacityRange').oninput=e=>{state[state.selected].opacity=+e.target.value;render()};
-$('lineRange').oninput=e=>{state[state.selected].line=+e.target.value;render()};
-$('letterRange').oninput=e=>{state[state.selected].letter=+e.target.value;render()};
-$('fontSelect').onchange=e=>{state[state.selected].font=e.target.value;render()};
-$('alignSelect').onchange=e=>{state[state.selected].align=e.target.value;render()};
-document.querySelectorAll('.swatch').forEach(b=>b.onclick=()=>{state[state.selected].color=b.dataset.color;render()});
-
-$('zoomRange').oninput=e=>{state.zoom=+e.target.value;render()};
-$('brightnessRange').oninput=e=>{state.brightness=+e.target.value;render()};
-$('overlayToggle').onchange=e=>{state.overlayOn=e.target.checked;render()};
-$('overlayRange').oninput=e=>{state.overlay=+e.target.value;render()};
-$('vignetteRange').oninput=e=>{state.vignette=+e.target.value;render()};
-$('imageUp').onclick=()=>{mutate(()=>state.imageY=Math.max(0,state.imageY-5))};
-$('imageDown').onclick=()=>{mutate(()=>state.imageY=Math.min(100,state.imageY+5))};
-
-$('photo').onchange=e=>{
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();r.onload=()=>{pushHistory();state.bgSrc=r.result;$('bg').src=state.bgSrc;render()};r.readAsDataURL(f);
-};
-$('useSample').onclick=()=>{mutate(()=>{state.bgSrc='sample.jpg';state.imageY=50;state.zoom=100;$('bg').src=state.bgSrc})};
-$('clearPhoto').onclick=()=>{mutate(()=>{state.bgSrc='';$('bg').removeAttribute('src')})};
-
-document.querySelectorAll('[data-format]').forEach(b=>b.onclick=()=>{
-  mutate(()=>{state.format=b.dataset.format});render();
-});
-document.querySelectorAll('[data-template]').forEach(b=>b.onclick=()=>{
-  mutate(()=>{
-    state.template=b.dataset.template;
-    const t=state.template;
-    if(t==='minimal'){state.title.x=10;state.title.y=10;state.poem.x=10;state.poem.y=28;state.title.align='left';state.poem.align='left';state.overlay=45}
-    if(t==='left'){state.title.x=8;state.title.y=13;state.poem.x=8;state.poem.y=26;state.title.align='left';state.poem.align='left';state.overlay=55}
-    if(t==='center'){state.title.x=10;state.title.y=15;state.poem.x=10;state.poem.y=31;state.title.align='center';state.poem.align='center';state.overlay=38}
-    if(t==='bottom'){state.title.x=10;state.title.y=57;state.poem.x=10;state.poem.y=65;state.title.align='left';state.poem.align='left';state.overlay=55}
-  });syncControls();render();
-});
-$('resetLayout').onclick=()=>{mutate(()=>{state.title.x=10;state.title.y=10;state.poem.x=10;state.poem.y=28;state.title.align='left';state.poem.align='left'});};
-$('centerPoem').onclick=()=>{mutate(()=>state.poem.y=45)};
-
-function dragElement(el,key){
-  let startX,startY,ox,oy,moved=false;
-  el.addEventListener('pointerdown',e=>{
-    if(e.button!==undefined&&e.button!==0)return;
-    e.preventDefault();
-    state.selected=key;syncSelectedButtons();render();
-    el.setPointerCapture(e.pointerId);startX=e.clientX;startY=e.clientY;ox=state[key].x;oy=state[key].y;moved=false;
-  });
-  el.addEventListener('pointermove',e=>{
-    if(!el.hasPointerCapture(e.pointerId))return;
-    const r=$('poster').getBoundingClientRect();
-    const dx=(e.clientX-startX)/r.width*100,dy=(e.clientY-startY)/r.height*100;
-    if(Math.abs(dx)+Math.abs(dy)>1)moved=true;
-    state[key].x=Math.max(1,Math.min(82,ox+dx));state[key].y=Math.max(1,Math.min(90,oy+dy));render();
-  });
-  el.addEventListener('pointerup',()=>{
-    if(moved){pushHistory();flash('Position updated ✓')}
-  });
-  el.addEventListener('click',()=>{state.selected=key;syncSelectedButtons();render()});
+function resetLayout() {
+  state.positions=JSON.parse(JSON.stringify(defaultPositions));
+  $("imageZoom").value=100;
+  $("imageY").value=0;
+  $("imageBrightness").value=100;
+  pushHistory();
+  render();
+  setStatus("Layout reset ✓");
 }
-dragElement($('titleEl'),'title');dragElement($('poemEl'),'poem');
 
-$('undoBtn').onclick=undo;$('redoBtn').onclick=redo;
-$('clearBtn').onclick=()=>{mutate(()=>{$('titleInput').value='';$('poemInput').value='';})};
+function clearText() {
+  $("titleInput").value="";
+  $("poemInput").value="";
+  pushHistory();
+  render();
+  setStatus("Text cleared");
+}
 
-function archive(){
-  try{
-    const value = JSON.parse(localStorage.getItem('ghaz-amin-archive') || '[]');
-    return Array.isArray(value) ? value : [];
-  }catch(err){
-    console.warn('Archive unavailable:',err);
+function getArchive() {
+  try {
+    const raw=JSON.parse(safeLocalGet("ghaz-amin-poems","[]"));
+    return Array.isArray(raw)?raw:[];
+  } catch(e) {
     return [];
   }
 }
-function saveArchive(){
-  try{
-    const a=archive();
-    a.unshift({id:Date.now(),name:$('saveName').value.trim()||$('titleInput').value||'Untitled',snapshot:snapshot()});
-    localStorage.setItem('ghaz-amin-archive',JSON.stringify(a.slice(0,100)));
-    $('saveName').value='';
-    renderArchive();
-    flash('Poem saved ✓');
-  }catch(err){
-    alert('Could not save this poem in the browser. Storage may be blocked or full.');
-  }
-}
-function renderArchive(){
-  const a=archive();
-  $('savedList').innerHTML='';
-  a.slice(0,6).forEach(item=>{
-    const d=document.createElement('div');d.className='archiveItem';
-    const s=document.createElement('span');s.textContent=item.name;
-    const b=document.createElement('button');b.className='btn small';b.textContent='Load';
-    b.onclick=()=>{pushHistory();restore(item.snapshot)};
-    d.append(s,b);$('savedList').append(d);
-  });
-}
-function renderArchiveModal(){
-  const a=archive();$('archiveGrid').innerHTML='';
-  if(!a.length){$('archiveGrid').innerHTML='<div class="help">No saved poems yet.</div>';return}
-  a.forEach(item=>{
-    const wrap=document.createElement('div');wrap.className='btn';
-    wrap.innerHTML=`<strong>${escapeHtml(item.name)}</strong><div class="help">Saved ${new Date(item.id).toLocaleString()}</div>`;
-    const load=document.createElement('button');load.className='btn small';load.textContent='Load';
-    load.onclick=()=>{pushHistory();restore(item.snapshot);$('modal').classList.remove('open')};
-    const del=document.createElement('button');del.className='btn danger small';del.textContent='Delete';
-    del.onclick=()=>{localStorage.setItem('ghaz-amin-archive',JSON.stringify(a.filter(x=>x.id!==item.id)));renderArchiveModal();renderArchive()};
-    wrap.append(document.createElement('br'),load,del);$('archiveGrid').append(wrap);
-  });
-}
-function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-$('saveBtn').onclick=saveArchive;$('manageBtn').onclick=()=>{$('modal').classList.add('open');renderArchiveModal()};
-$('closeModal').onclick=()=>$('modal').classList.remove('open');
-$('modal').onclick=e=>{if(e.target===$('modal'))$('modal').classList.remove('open')};
 
-function fitImage(ctx,img,W,H,zoom){
-  const scale=Math.max(W/img.naturalWidth,H/img.naturalHeight)*(zoom/100);
-  const dw=img.naturalWidth*scale,dh=img.naturalHeight*scale;
-  const y=(H-dh)*((state.imageY||50)/100);
-  ctx.drawImage(img,(W-dw)/2,y,dw,dh);
-}
-function wrapLines(ctx,text,maxWidth){
-  const out=[];
-  for(const paragraph of String(text||'').split('\n')){
-    if(!paragraph){out.push('');continue}
-    let line='';
-    for(const word of paragraph.split(/\s+/)){
-      const test=line?line+' '+word:word;
-      if(line&&ctx.measureText(test).width>maxWidth){out.push(line);line=word}else line=test;
-    }
-    out.push(line);
+function saveArchive() {
+  const arr=getArchive();
+  arr.unshift({
+    id:Date.now(),
+    name:$("saveNameInput").value.trim() || $("titleInput").value.trim() || "Untitled",
+    snapshot:snapshot()
+  });
+  const ok=safeLocalSet("ghaz-amin-poems",JSON.stringify(arr.slice(0,100)));
+  if(!ok) {
+    alert("The browser could not save this poem. Storage may be blocked or full.");
+    return;
   }
+  $("saveNameInput").value="";
+  renderArchive();
+  setStatus("Poem saved ✓");
+}
+
+function deleteArchive(id) {
+  const arr=getArchive().filter(p=>p.id!==id);
+  safeLocalSet("ghaz-amin-poems",JSON.stringify(arr));
+  renderArchive();
+  setStatus("Saved poem deleted");
+}
+
+function loadArchive(id) {
+  const p=getArchive().find(x=>x.id===id);
+  if(!p) return;
+  restore(p.snapshot);
+  state.history=[snapshot()];
+  state.future=[];
+  setStatus("Poem loaded ✓");
+}
+
+function renderArchive() {
+  const box=$("savedList");
+  box.innerHTML="";
+  const arr=getArchive();
+  if(!arr.length) {
+    const d=document.createElement("div");
+    d.className="status";
+    d.style.marginTop="10px";
+    d.textContent="No saved poems yet.";
+    box.appendChild(d);
+    return;
+  }
+  arr.forEach(p=>{
+    const row=document.createElement("div");
+    row.className="saved";
+    const name=document.createElement("span");
+    name.textContent=p.name;
+    const load=document.createElement("button");
+    load.type="button";
+    load.textContent="Load";
+    load.addEventListener("click",()=>loadArchive(p.id));
+    const del=document.createElement("button");
+    del.type="button";
+    del.textContent="Delete";
+    del.addEventListener("click",()=>deleteArchive(p.id));
+    row.append(name,load,del);
+    box.appendChild(row);
+  });
+}
+
+function wrapText(ctx,text,maxWidth) {
+  const lines=[];
+  for(const paragraph of String(text||"").split("\n")) {
+    if(paragraph==="") { lines.push(""); continue; }
+    const words=paragraph.split(/\s+/);
+    let line="";
+    for(const word of words) {
+      const test=line?line+" "+word:word;
+      if(ctx.measureText(test).width>maxWidth && line) {
+        lines.push(line);
+        line=word;
+      } else {
+        line=test;
+      }
+    }
+    if(line) lines.push(line);
+  }
+  return lines;
+}
+
+function coverImage(ctx,img,W,H,zoom,yPercent,brightness) {
+  const iw=img.naturalWidth || img.width;
+  const ih=img.naturalHeight || img.height;
+  const scale=Math.max(W/iw,H/ih)*(zoom/100);
+  const dw=iw*scale;
+  const dh=ih*scale;
+  const y=(H-dh)/2 + (yPercent/100)*H;
+  ctx.save();
+  ctx.filter=`brightness(${brightness/100})`;
+  ctx.drawImage(img,(W-dw)/2,y,dw,dh);
+  ctx.restore();
+}
+
+function drawPosterToCanvas(img,W,H) {
+  const out=document.createElement("canvas");
+  out.width=W; out.height=H;
+  const ctx=out.getContext("2d");
+  if(!ctx) throw new Error("Canvas is not available in this browser.");
+
+  coverImage(ctx,img,W,H,Number($("imageZoom").value),Number($("imageY").value),Number($("imageBrightness").value));
+
+  if($("shadeToggle").checked) {
+    const g=ctx.createLinearGradient(0,0,W,0);
+    g.addColorStop(0,"rgba(0,0,0,.55)");
+    g.addColorStop(.78,"rgba(0,0,0,.05)");
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,W,H);
+  }
+  if($("vignetteToggle").checked) {
+    const g=ctx.createRadialGradient(W/2,H/2,Math.min(W,H)*.25,W/2,H/2,Math.max(W,H)*.7);
+    g.addColorStop(0,"rgba(0,0,0,0)");
+    g.addColorStop(1,"rgba(0,0,0,.58)");
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,W,H);
+  }
+
+  const scaleX=W/$("poster").clientWidth;
+  const scaleY=H/$("poster").clientHeight;
+  const titleX=state.positions.title.x/100*W;
+  const titleY=state.positions.title.y/100*H;
+  const poemX=state.positions.poem.x/100*W;
+  const poemY=state.positions.poem.y/100*H;
+
+  ctx.textBaseline="top";
+  ctx.textAlign="left";
+  ctx.fillStyle="#f4f0e8";
+  ctx.shadowColor="rgba(0,0,0,.55)";
+  ctx.shadowBlur=16;
+
+  const font=$("fontSelect").value;
+  const titlePx=Number($("titleSize").value)*scaleX;
+  const poemPx=Number($("poemSize").value)*scaleX;
+
+  ctx.globalAlpha=Number($("titleOpacity").value)/100;
+  ctx.font=`600 ${titlePx}px "${font}"`;
+  ctx.fillText($("titleInput").value||"Untitled",titleX,titleY);
+
+  ctx.globalAlpha=Number($("poemOpacity").value)/100;
+  ctx.font=`400 ${poemPx}px "${font}"`;
+  const maxWidth=W*.80;
+  const lines=wrapText(ctx,$("poemInput").value,maxWidth);
+  let cy=poemY;
+  for(const line of lines) {
+    if(line==="") { cy+=poemPx*1.42; continue; }
+    ctx.fillText(line,poemX,cy);
+    cy+=poemPx*1.42;
+  }
+
+  ctx.shadowBlur=0;
+  ctx.globalAlpha=.78;
+  ctx.font=`500 ${20*scaleX}px "DM Sans"`;
+  ctx.fillText(("SEBUAH PUISI OLEH "+($("penNameInput").value||"ghaz.amin")).toUpperCase(),poemX,H*.95);
+  ctx.globalAlpha=1;
+
   return out;
 }
-async function loadExportImage(src){
-  if(!src)throw new Error('Please choose a background photo first.');
-  const img=new Image();
-  img.src=src;
-  await new Promise((res,rej)=>{img.onload=res;img.onerror=()=>rej(new Error('The background image could not be loaded.'))});
-  return img;
+
+async function loadExportImage() {
+  const source=$("bgImage").src;
+  if(!source) throw new Error("No background image selected.");
+  if($("bgImage").complete && $("bgImage").naturalWidth>0 && source===state.imageSrc) {
+    return $("bgImage");
+  }
+  return await new Promise((resolve,reject)=>{
+    const img=new Image();
+    img.onload=()=>resolve(img);
+    img.onerror=()=>reject(new Error("Could not load the background image."));
+    img.src=source;
+  });
 }
-async function exportPNG(){
-  const btn=$('exportBtn');btn.disabled=true;btn.textContent='Exporting…';
-  try{
-    if(document.fonts&&document.fonts.ready)await document.fonts.ready;
-    const img=await loadExportImage(state.bgSrc);
-    const f=formats[state.format],c=document.createElement('canvas');c.width=f.w;c.height=f.h;
-    const ctx=c.getContext('2d');if(!ctx)throw new Error('Canvas is not supported by this browser.');
-    ctx.fillStyle='#111';ctx.fillRect(0,0,f.w,f.h);
-    ctx.filter=`brightness(${state.brightness}%)`;fitImage(ctx,img,f.w,f.h,state.zoom);ctx.filter='none';
 
-    if(state.overlayOn){
-      const g=ctx.createLinearGradient(0,0,f.w,0);
-      g.addColorStop(0,`rgba(0,0,0,${state.overlay/100})`);
-      g.addColorStop(.78,`rgba(0,0,0,${state.overlay/100*.15})`);
-      ctx.fillStyle=g;ctx.fillRect(0,0,f.w,f.h);
-      if(state.vignette){const vg=ctx.createRadialGradient(f.w/2,f.h/2,Math.min(f.w,f.h)*.25,f.w/2,f.h/2,Math.max(f.w,f.h)*.72);vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,`rgba(0,0,0,${state.vignette/100})`);ctx.fillStyle=vg;ctx.fillRect(0,0,f.w,f.h)}
-    }
+async function exportPNG() {
+  const btn=$("exportBtn");
+  btn.disabled=true;
+  const old=btn.textContent;
+  btn.textContent="Exporting…";
+  try {
+    if(document.fonts && document.fonts.ready) await document.fonts.ready;
+    const img=await loadExportImage();
+    const f=formats[state.format];
+    const canvas=drawPosterToCanvas(img,f.w,f.h);
+    const blob=await new Promise((resolve,reject)=>{
+      canvas.toBlob(b=>b?resolve(b):reject(new Error("PNG creation failed.")),"image/png");
+    });
+    const url=URL.createObjectURL(blob);
+    const filename=((($("titleInput").value||"poetry-poster").replace(/[^a-z0-9]+/gi,"-").replace(/^-+|-+$/g,""))||"poetry-poster").toLowerCase()+".png";
 
-    function drawText(key,text){
-      const s=state[key],scale=f.w/1440;
-      const x=s.x/100*f.w,y=s.y/100*f.h,maxW=.80*f.w;
-      ctx.fillStyle=s.color;ctx.globalAlpha=s.opacity/100;ctx.textAlign=s.align;ctx.textBaseline='top';
-      ctx.font=`600 ${s.size*scale}px "${s.font}"`;
-      ctx.shadowColor='rgba(0,0,0,.5)';ctx.shadowBlur=key==='title'?16:10;
-      if(key==='poem')ctx.font=`400 ${s.size*scale}px "${s.font}"`;
-      ctx.letterSpacing=s.letter*scale+'px';
-      const lines=wrapLines(ctx,text,maxW),lh=s.size*scale*s.line/100;
-      let cy=y;
-      for(const line of lines){ctx.fillText(line,line===''?'':line,x,cy);cy+=lh}
-      ctx.letterSpacing='0px';ctx.globalAlpha=1;
-    }
-    drawText('title',$('titleInput').value||'Untitled');
-    drawText('poem',$('poemInput').value||'');
+    // Modern download API first.
+    const a=document.createElement("a");
+    a.href=url;
+    a.download=filename;
+    a.rel="noopener";
+    a.style.display="none";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
 
-    ctx.shadowBlur=0;ctx.globalAlpha=.78;ctx.fillStyle=state.credit.color;ctx.textAlign='left';ctx.textBaseline='top';
-    ctx.font=`500 ${state.credit.size*f.w/1440}px "DM Sans"`;
-    ctx.fillText(('SEBUAH PUISI OLEH '+($('penName').value||'ghaz.amin')).toUpperCase(),state.credit.x/100*f.w,state.credit.y/100*f.h);
-    ctx.globalAlpha=1;
-
-    const blob=await new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(new Error('PNG creation failed.')),'image/png'));
-    const filename=(($('titleInput').value||'poetry-poster').replace(/[^a-z0-9]+/gi,'-').replace(/^-+|-+$/g,'')||'poetry-poster').toLowerCase()+'.png';
-    const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);
-    try{ a.click(); }
-    catch(clickErr){ window.open(url,'_blank','noopener'); }
-    setTimeout(()=>{a.remove();URL.revokeObjectURL(url)},5000);
-    $('status').textContent='Export complete ✓';
-  }catch(err){console.error(err);$('status').textContent='Export failed';alert('Export failed: '+err.message)}
-  finally{btn.disabled=false;btn.textContent='Export PNG'}
+    // Keep the object URL alive briefly for browsers that need it.
+    setTimeout(()=>URL.revokeObjectURL(url),10000);
+    setStatus("PNG exported ✓");
+  } catch(err) {
+    console.error(err);
+    alert("PNG export failed: "+(err.message||err));
+    setStatus("Export failed");
+  } finally {
+    btn.disabled=false;
+    btn.textContent=old;
+  }
 }
-$('exportBtn').onclick=exportPNG;
 
-let deferredPrompt=null;
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('installBtn').style.display='block'});
-$('installBtn').onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();deferredPrompt=null};
+function makeDraggable(el,key) {
+  let active=false,startX=0,startY=0,startPos=null,pointerId=null;
 
-window.addEventListener('resize',setPosterSize);
-window.addEventListener('keydown',e=>{
-  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?redo():undo()}
-  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'){e.preventDefault();redo()}
+  el.addEventListener("pointerdown",(e)=>{
+    active=true;
+    pointerId=e.pointerId;
+    startX=e.clientX;
+    startY=e.clientY;
+    startPos={...state.positions[key]};
+    state.selected=key;
+    el.classList.add("dragging");
+    try{el.setPointerCapture(pointerId)}catch(_){}
+    e.preventDefault();
+  });
+
+  el.addEventListener("pointermove",(e)=>{
+    if(!active || e.pointerId!==pointerId) return;
+    const rect=$("poster").getBoundingClientRect();
+    const dx=(e.clientX-startX)/rect.width*100;
+    const dy=(e.clientY-startY)/rect.height*100;
+    state.positions[key].x=Math.max(2,Math.min(75,startPos.x+dx));
+    state.positions[key].y=Math.max(2,Math.min(90,startPos.y+dy));
+    render();
+  });
+
+  const finish=(e)=>{
+    if(!active || (e && e.pointerId!==pointerId)) return;
+    active=false;
+    el.classList.remove("dragging");
+    pushHistory();
+    setStatus("Position updated ✓");
+  };
+  el.addEventListener("pointerup",finish);
+  el.addEventListener("pointercancel",finish);
+}
+
+$("photoInput").addEventListener("change",e=>loadFile(e.target.files[0]));
+$("useSampleBtn").addEventListener("click",useSample);
+$("clearPhotoBtn").addEventListener("click",()=>{
+  state.imageSrc="";
+  state.imageIsData=false;
+  $("bgImage").removeAttribute("src");
+  setStatus("Photo removed");
+});
+$("clearBtn").addEventListener("click",clearText);
+$("exportBtn").addEventListener("click",exportPNG);
+$("saveBtn").addEventListener("click",saveArchive);
+$("undoBtn").addEventListener("click",undo);
+$("redoBtn").addEventListener("click",redo);
+$("resetBtn").addEventListener("click",resetLayout);
+$("lowerPoemBtn").addEventListener("click",()=>{state.positions.poem.y=42;pushHistory();render();setStatus("Poem lowered ✓")});
+$("centerTitleBtn").addEventListener("click",()=>{state.positions.title.x=30;pushHistory();render();setStatus("Title centered ✓")});
+$("centerPoemBtn").addEventListener("click",()=>{state.positions.poem.x=20;pushHistory();render();setStatus("Poem centered ✓")});
+
+document.querySelectorAll("[data-format]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    state.format=btn.dataset.format;
+    pushHistory();
+    render();
+  });
 });
 
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(console.warn)}
+["titleInput","poemInput","penNameInput","fontSelect","titleSize","poemSize","titleOpacity","poemOpacity","shadeToggle","vignetteToggle","imageZoom","imageBrightness","imageY"].forEach(id=>{
+  const el=$(id);
+  el.addEventListener("input",()=>{
+    render();
+  });
+  el.addEventListener("change",()=>{
+    pushHistory();
+    render();
+  });
+});
 
-render();renderArchive();pushHistory();
+makeDraggable($("titleLayer"),"title");
+makeDraggable($("poemLayer"),"poem");
+
+document.addEventListener("keydown",e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="z"){
+    e.preventDefault();
+    if(e.shiftKey) redo(); else undo();
+  }
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="y"){
+    e.preventDefault();
+    redo();
+  }
+});
+
+window.addEventListener("error",e=>{
+  console.error("Studio error:",e.error||e.message);
+  setStatus("App error · see console");
+});
+
+window.addEventListener("unhandledrejection",e=>{
+  console.error("Studio promise error:",e.reason);
+  setStatus("App error · see console");
+});
+
+state.history=[snapshot()];
+render();
+renderArchive();
+
+if("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js").catch(err=>console.warn("Service worker:",err));
+}
+})();
 </script>
 </body>
 </html>

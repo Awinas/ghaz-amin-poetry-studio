@@ -1,14 +1,20 @@
 {
-  "name":"ghaz.amin Poetry Studio",
-  "short_name":"ghaz.amin",
-  "start_url":"./",
-  "scope":"./",
-  "display":"standalone",
-  "background_color":"#090c10",
-  "theme_color":"#11151b",
-  "description":"Personal poetry poster maker and archive for ghaz.amin.",
-  "icons":[
-    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  "name": "ghaz.amin Poetry Studio",
+  "short_name": "ghaz.amin",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#090c10",
+  "theme_color": "#11151b",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ]
 }
