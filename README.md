@@ -1,20 +1,25 @@
-# ghaz.amin Poetry Studio
+# ghaz.amin Poetry Studio v2
 
-A private, installable poetry poster web app designed for GitHub Pages.
+A Canva-inspired, private poetry poster maker for GitHub Pages.
 
-## Features
-- Upload any photo
-- Edit title, poem and pen name
-- Pen name defaults to `ghaz.amin`
-- Drag title and poem on the canvas
-- Choose typography and sizes
-- Dark overlay toggle
-- Save multiple poems locally in the browser
-- Export 1440x1800 PNG
+## Included
+
+- 4:5 portrait, 1:1 square, and 9:16 story formats
+- Multiple templates
+- Upload your own photo
+- Image zoom, vertical positioning and brightness
+- Dark overlay and vignette
+- Title and poem drag-and-drop
+- Font, size, opacity, line-height, letter spacing, alignment and colour controls
+- Undo / redo
+- Local poetry archive
+- PNG export at the selected format's high-resolution canvas
 - PWA install support
-- No backend and no account/database required
+- Offline caching
+- No backend and no account required
 
 ## GitHub Pages
-Create a repository such as `ghaz-amin-poetry-studio`, upload all files in this folder, then enable GitHub Pages from Settings → Pages using the `main` branch and root folder.
 
-The browser is the storage layer for saved poems. Photos and poems are not uploaded to a server by this app.
+Put these files in the repository root and publish `main` / `/(root)` through Settings → Pages.
+
+After replacing files, hard refresh once with Ctrl+Shift+R.
