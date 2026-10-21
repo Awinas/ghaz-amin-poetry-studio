@@ -1,3 +1,3 @@
-# A Birthday for Ishami 
+# A Poem Need A Poet
 
-A cute, responsive, multi-page birthday website celebrating tulips 🌷, cats 🐈.
+For the poems website.
