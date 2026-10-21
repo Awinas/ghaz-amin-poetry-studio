@@ -83,8 +83,8 @@ input[type=range]{width:100%;accent-color:var(--accent)}
     <div class="label">Background</div>
     <input id="photo" class="file" type="file" accept="image/*">
     <div class="grid2" style="margin-top:8px">
-      <button type="button" class="btn" id="useSample">Gadis Kataha</button>
-      <button type="button" class="btn" id="clearPhoto">Remove</button>
+      <button class="btn" id="useSample">Gadis Kataha</button>
+      <button class="btn" id="clearPhoto">Remove</button>
     </div>
     <div class="help">Your photo stays in this browser. Nothing is uploaded.</div>
   </div>
@@ -92,19 +92,19 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   <div class="section">
     <div class="label">Format</div>
     <div class="grid3">
-      <button type="button" class="btn templateBtn" data-format="portrait">4:5<br><small>Portrait</small></button>
-      <button type="button" class="btn templateBtn" data-format="square">1:1<br><small>Square</small></button>
-      <button type="button" class="btn templateBtn" data-format="story">9:16<br><small>Story</small></button>
+      <button class="btn templateBtn" data-format="portrait">4:5<br><small>Portrait</small></button>
+      <button class="btn templateBtn" data-format="square">1:1<br><small>Square</small></button>
+      <button class="btn templateBtn" data-format="story">9:16<br><small>Story</small></button>
     </div>
   </div>
 
   <div class="section">
     <div class="label">Templates</div>
     <div class="grid2">
-      <button type="button" class="btn templateBtn" data-template="minimal">Minimal</button>
-      <button type="button" class="btn templateBtn" data-template="left">Left Editorial</button>
-      <button type="button" class="btn templateBtn" data-template="center">Centered</button>
-      <button type="button" class="btn templateBtn" data-template="bottom">Bottom Poetry</button>
+      <button class="btn templateBtn" data-template="minimal">Minimal</button>
+      <button class="btn templateBtn" data-template="left">Left Editorial</button>
+      <button class="btn templateBtn" data-template="center">Centered</button>
+      <button class="btn templateBtn" data-template="bottom">Bottom Poetry</button>
     </div>
   </div>
 
@@ -146,8 +146,8 @@ dek satu senyuman kecil daripadanya.</textarea>
   <div class="section">
     <div class="label">Selected text</div>
     <div class="grid2">
-      <button type="button" class="btn active" id="selectTitle">Title</button>
-      <button type="button" class="btn" id="selectPoem">Poem</button>
+      <button class="btn active" id="selectTitle">Title</button>
+      <button class="btn" id="selectPoem">Poem</button>
     </div>
     <div class="rangeRow" style="margin-top:10px">
       <div><div class="label">Size</div><input id="sizeRange" type="range" min="12" max="84" value="48"></div>
@@ -171,10 +171,10 @@ dek satu senyuman kecil daripadanya.</textarea>
       </select>
     </div>
     <div class="swatches" style="margin-top:9px">
-      <button type="button" class="swatch" data-color="#f5efe3" style="background:#f5efe3" title="Cream"></button>
-      <button type="button" class="swatch" data-color="#ffffff" style="background:#fff" title="White"></button>
-      <button type="button" class="swatch" data-color="#d9c49a" style="background:#d9c49a" title="Gold"></button>
-      <button type="button" class="swatch" data-color="#d8d8d8" style="background:#d8d8d8" title="Silver"></button>
+      <button class="swatch" data-color="#f5efe3" style="background:#f5efe3" title="Cream"></button>
+      <button class="swatch" data-color="#ffffff" style="background:#fff" title="White"></button>
+      <button class="swatch" data-color="#d9c49a" style="background:#d9c49a" title="Gold"></button>
+      <button class="swatch" data-color="#d8d8d8" style="background:#d8d8d8" title="Silver"></button>
     </div>
   </div>
 
@@ -185,7 +185,7 @@ dek satu senyuman kecil daripadanya.</textarea>
       <div><div class="label">Brightness</div><input id="brightnessRange" type="range" min="40" max="140" value="100"></div>
     </div>
     <div class="grid2">
-      <button type="button" class="btn" id="imageUp">Image ↑</button><button type="button" class="btn" id="imageDown">Image ↓</button>
+      <button class="btn" id="imageUp">Image ↑</button><button class="btn" id="imageDown">Image ↓</button>
     </div>
     <label class="check"><input id="overlayToggle" type="checkbox" checked> Dark overlay</label>
     <div class="rangeRow">
@@ -197,8 +197,8 @@ dek satu senyuman kecil daripadanya.</textarea>
   <div class="section">
     <div class="label">Layout</div>
     <div class="grid2">
-      <button type="button" class="btn" id="resetLayout">Reset layout</button>
-      <button type="button" class="btn" id="centerPoem">Lower poem</button>
+      <button class="btn" id="resetLayout">Reset layout</button>
+      <button class="btn" id="centerPoem">Lower poem</button>
     </div>
     <div class="help">Drag title or poem directly on the poster. Use mouse/touch.</div>
   </div>
@@ -207,14 +207,14 @@ dek satu senyuman kecil daripadanya.</textarea>
     <div class="label">Archive</div>
     <input id="saveName" type="text" placeholder="Poem name">
     <div class="grid2" style="margin-top:8px">
-      <button type="button" class="btn primary" id="saveBtn">Save</button>
-      <button type="button" class="btn" id="manageBtn">Manage</button>
+      <button class="btn primary" id="saveBtn">Save</button>
+      <button class="btn" id="manageBtn">Manage</button>
     </div>
     <div id="savedList"></div>
   </div>
 
   <div class="section">
-    <button type="button" class="btn" id="installBtn" style="width:100%;display:none">Install ghaz.amin Studio</button>
+    <button class="btn" id="installBtn" style="width:100%;display:none">Install ghaz.amin Studio</button>
   </div>
 </aside>
 
@@ -222,10 +222,10 @@ dek satu senyuman kecil daripadanya.</textarea>
   <div class="toolbar">
     <div class="status" id="status">Ready · 1440 × 1800</div>
     <div class="grow"></div>
-    <button type="button" class="btn" id="undoBtn">Undo</button>
-    <button type="button" class="btn" id="redoBtn">Redo</button>
-    <button type="button" class="btn" id="clearBtn">Clear</button>
-    <button type="button" class="btn primary" id="exportBtn">Export PNG</button>
+    <button class="btn" id="undoBtn">Undo</button>
+    <button class="btn" id="redoBtn">Redo</button>
+    <button class="btn" id="clearBtn">Clear</button>
+    <button class="btn primary" id="exportBtn">Export PNG</button>
   </div>
   <div class="stage">
     <div class="poster" id="poster">
@@ -244,7 +244,7 @@ dek satu senyuman kecil daripadanya.</textarea>
  <div class="modalCard">
   <div style="display:flex;align-items:center;gap:10px">
    <h2 style="font-family:'Cormorant Garamond';margin:0;flex:1">Poetry Archive</h2>
-   <button type="button" class="btn" id="closeModal">Close</button>
+   <button class="btn" id="closeModal">Close</button>
   </div>
   <div id="archiveGrid" class="modalGrid" style="margin-top:14px"></div>
  </div>
@@ -253,24 +253,7 @@ dek satu senyuman kecil daripadanya.</textarea>
 <script>
 'use strict';
 
-window.addEventListener('error', e => {
-  console.error('ghaz.amin Studio error:', e.error || e.message);
-  const status = document.getElementById('status');
-  if(status) status.textContent = 'App error: refresh the page';
-});
-
-window.addEventListener('unhandledrejection', e => {
-  console.error('ghaz.amin Studio promise error:', e.reason);
-});
-
 const $ = id => document.getElementById(id);
-
-function flash(message){
-  const el = $('status');
-  if(el){ el.textContent = message; clearTimeout(window.__flashTimer);
-    window.__flashTimer = setTimeout(()=>{ el.textContent = `Ready · ${formats[state.format].w} × ${formats[state.format].h}`; }, 1800);
-  }
-}
 
 const state = {
   format: 'portrait',
@@ -320,15 +303,8 @@ function pushHistory(){
     state.history.push(s); if(state.history.length>40)state.history.shift(); state.future=[];
   }
 }
-function undo(){
-  if(state.history.length<2){flash('Nothing to undo');return}
-  const current=state.history.pop();state.future.push(current);
-  restore(state.history[state.history.length-1]);flash('Undo ✓');
-}
-function redo(){
-  if(!state.future.length){flash('Nothing to redo');return}
-  const s=state.future.pop();state.history.push(s);restore(s);flash('Redo ✓');
-}
+function undo(){if(state.history.length<2)return;const current=state.history.pop();state.future.push(current);restore(state.history[state.history.length-1]);}
+function redo(){if(!state.future.length)return;const s=state.future.pop();state.history.push(s);restore(s);}
 
 function setPosterSize(){
   const f=formats[state.format];
@@ -429,7 +405,6 @@ function dragElement(el,key){
   let startX,startY,ox,oy,moved=false;
   el.addEventListener('pointerdown',e=>{
     if(e.button!==undefined&&e.button!==0)return;
-    e.preventDefault();
     state.selected=key;syncSelectedButtons();render();
     el.setPointerCapture(e.pointerId);startX=e.clientX;startY=e.clientY;ox=state[key].x;oy=state[key].y;moved=false;
   });
@@ -440,36 +415,19 @@ function dragElement(el,key){
     if(Math.abs(dx)+Math.abs(dy)>1)moved=true;
     state[key].x=Math.max(1,Math.min(82,ox+dx));state[key].y=Math.max(1,Math.min(90,oy+dy));render();
   });
-  el.addEventListener('pointerup',()=>{
-    if(moved){pushHistory();flash('Position updated ✓')}
-  });
-  el.addEventListener('click',()=>{state.selected=key;syncSelectedButtons();render()});
+  el.addEventListener('pointerup',()=>{if(moved)pushHistory()});
 }
 dragElement($('titleEl'),'title');dragElement($('poemEl'),'poem');
 
 $('undoBtn').onclick=undo;$('redoBtn').onclick=redo;
 $('clearBtn').onclick=()=>{mutate(()=>{$('titleInput').value='';$('poemInput').value='';})};
 
-function archive(){
-  try{
-    const value = JSON.parse(localStorage.getItem('ghaz-amin-archive') || '[]');
-    return Array.isArray(value) ? value : [];
-  }catch(err){
-    console.warn('Archive unavailable:',err);
-    return [];
-  }
-}
+function archive(){try{return JSON.parse(localStorage.getItem('ghaz-amin-archive')||'[]')}catch{return[]}}
 function saveArchive(){
-  try{
-    const a=archive();
-    a.unshift({id:Date.now(),name:$('saveName').value.trim()||$('titleInput').value||'Untitled',snapshot:snapshot()});
-    localStorage.setItem('ghaz-amin-archive',JSON.stringify(a.slice(0,100)));
-    $('saveName').value='';
-    renderArchive();
-    flash('Poem saved ✓');
-  }catch(err){
-    alert('Could not save this poem in the browser. Storage may be blocked or full.');
-  }
+  const a=archive();
+  a.unshift({id:Date.now(),name:$('saveName').value.trim()||$('titleInput').value||'Untitled',snapshot:snapshot()});
+  localStorage.setItem('ghaz-amin-archive',JSON.stringify(a.slice(0,100)));
+  $('saveName').value='';renderArchive();
 }
 function renderArchive(){
   const a=archive();
@@ -567,10 +525,8 @@ async function exportPNG(){
 
     const blob=await new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(new Error('PNG creation failed.')),'image/png'));
     const filename=(($('titleInput').value||'poetry-poster').replace(/[^a-z0-9]+/gi,'-').replace(/^-+|-+$/g,'')||'poetry-poster').toLowerCase()+'.png';
-    const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);
-    try{ a.click(); }
-    catch(clickErr){ window.open(url,'_blank','noopener'); }
-    setTimeout(()=>{a.remove();URL.revokeObjectURL(url)},5000);
+    const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();
+    setTimeout(()=>{a.remove();URL.revokeObjectURL(url)},2000);
     $('status').textContent='Export complete ✓';
   }catch(err){console.error(err);$('status').textContent='Export failed';alert('Export failed: '+err.message)}
   finally{btn.disabled=false;btn.textContent='Export PNG'}
